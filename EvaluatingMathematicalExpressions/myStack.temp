@@ -1,0 +1,39 @@
+#include "pch.h"
+#include <cassert>
+
+namespace sikhosana
+{
+		template <class Item>
+		void STACK<Item>::push(const Item& entry)
+		{
+			assert(size() < CAPACITY);
+			data[used] = entry;
+			++used;
+		}
+
+		template <class Item>
+		void STACK<Item>::pop()
+		{
+			assert(!empty());
+			--used;
+		}
+
+		template <class Item>
+		Item STACK<Item>::top()
+		{
+			assert(!empty());
+			return data[used - 1];
+		}
+
+		template <class Item>
+		int STACK<Item>::size()
+		{
+			return used;
+		}
+
+		template <class Item>
+		bool STACK<Item>::empty()
+		{
+			return (used == 0);
+		}
+}
